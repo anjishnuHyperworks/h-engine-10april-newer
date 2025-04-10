@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-color: #F8F8F8;
+    --secondary-color: #FAEBCD;
+    --accent-color: #F7C873;
+    --contrast-accent-color: #434343;
+    --hover-contrast-accent-color: #4242420d;
+
+    --success-text-color: #42a36b;
+    --error-text-color: #b15449;
+    --warning-text-color: #ffcc7b;
+    --info-text-color: #3498db;
+
+    --success-bg-color: rgba(66, 163, 106, 0.25);
+    --error-bg-color: rgba(177, 83, 73, 0.25);
+    --warning-bg-color: rgba(255, 204, 123, 0.5);
+    --info-bg-color: rgba(52, 152, 219, 0.25);
+
+    --primary-font: 'Poppins', sans-serif;
+}
+
+* {
+    font-family: var(--primary-font);
+}
+
+html, body {
+    background-color: var(--primary-color);
+}
+
+#custom-label > label.focused{
+    background: linear-gradient(0deg, var(--primary-color) 50%, white 50%);
+}
+
+@keyframes message-timer-shrink {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+.message-progress-bar {
+    animation: message-timer-shrink 3s linear forwards;
+}
+
+@keyframes rotateLogo {
+    0% {
+        transform: rotate(0deg);
+        scale: 1;
+    } 50% {
+        transform: rotate(180deg);
+        scale: 0.75;
+    } 100% {
+        transform: rotate(360deg);
+        scale: 1;
+    }
+}
+
+#loader-logo {
+    animation: rotateLogo 2s linear infinite;
+}

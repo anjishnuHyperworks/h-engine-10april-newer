@@ -1,0 +1,2 @@
+PARAMETER_NAME,PARAMETER_TYPE,PARAMETER_UNIT
+write the parameter name here,"write the parameter type here (number, string, ranged-decimal)",any unit (leave blank for strings)
