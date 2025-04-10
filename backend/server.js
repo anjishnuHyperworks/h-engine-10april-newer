@@ -87,9 +87,40 @@ postgisPool.query('SELECT NOW()')
     console.error('PostGIS connection error:', err);
 });
 
-sql.connect(dbConfig)
-    .then(() => console.log('Database connected successfully'))
-    .catch(err => console.error('Database connection failed:', err));
+// sql.connect(dbConfig)
+//     .then(() => console.log('Database connected successfully'))
+//     .catch(err => console.error('Database connection failed:', err));
+
+// Initialize SQL connection pool with proper handling
+let poolPromise = sql.connect(dbConfig)
+    .then(pool => {
+        console.log('Database connected successfully');
+        return pool;
+    })
+    .catch(err => {
+        console.error('Database connection failed:', err);
+        // Set to null so we can retry later
+        poolPromise = null;
+        return Promise.reject(err);
+    });
+
+// Helper function to ensure DB connection before queries
+async function ensureDatabaseConnection() {
+    if (!poolPromise) {
+        console.log('Retrying database connection...');
+        poolPromise = sql.connect(dbConfig)
+            .then(pool => {
+                console.log('Database reconnected successfully');
+                return pool;
+            })
+            .catch(err => {
+                console.error('Database reconnection failed:', err);
+                poolPromise = null;
+                return Promise.reject(err);
+            });
+    }
+    return poolPromise;
+}
 
 // MIDDLEWARE TO ENCRYPT ALL RESPONSES
 app.use(async (req, res, next) => {
@@ -164,6 +195,9 @@ app.post('/api/login', async (req, res) => {
     console.log(email, password, login_location);
 
     try {
+        // Ensure database connection is established
+        await ensureDatabaseConnection();
+
         console.log(`USER WITH EMAIL ${email} TRYING TO LOGIN`);
         const userResult = await sql.query`SELECT * FROM USERS WHERE EMAIL = ${email}`;
 
