@@ -23,7 +23,8 @@ app.use(express.json());
 const allowedOrigins = [
     "https://h-engine.vercel.app", // PRODUCTION FRONTEND
     "https://h-engine-dev.vercel.app", // PRODUCTION DEV FRONTEND
-    "http://localhost:3000" // LOCAL DEVELOPMENT
+    "http://localhost:3000", // LOCAL DEVELOPMENT
+    "https://h-engine-10april-newer.vercel.app/"
 ];
 
 const corsOptions = {
