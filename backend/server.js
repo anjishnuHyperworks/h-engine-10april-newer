@@ -1,6 +1,9 @@
 app.get('/', (req, res) => {
     res.send('H-Engine API is running');
   });
+  
+// Export for Vercel serverless functions
+module.exports = app;
 
 // require('dotenv').config();
 
