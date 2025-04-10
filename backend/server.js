@@ -26,8 +26,14 @@ const allowedOrigins = [
     "https://h-engine-dev.vercel.app", // PRODUCTION DEV FRONTEND
     "http://localhost:3000", // LOCAL DEVELOPMENT
     "https://h-engine-10april-newer.vercel.app",  // removed trailing slash
-    "https://h-engine-10april-newer-anjishnuhyperworks-projects.vercel.app"  // added second domain
+    "https://h-engine-10april-newer-anjishnuhyperworks-projects.vercel.app",  // added second domain
+    "*"
 ];
+
+// Add this before any middleware
+app.get('/', (req, res) => {
+    return res.status(200).send('H-Engine API is running');
+  });
 
 const corsOptions = {
     origin: (origin, callback) => {
