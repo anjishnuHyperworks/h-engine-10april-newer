@@ -24,7 +24,8 @@ const allowedOrigins = [
     "https://h-engine.vercel.app", // PRODUCTION FRONTEND
     "https://h-engine-dev.vercel.app", // PRODUCTION DEV FRONTEND
     "http://localhost:3000", // LOCAL DEVELOPMENT
-    "https://h-engine-10april-newer.vercel.app"
+    "https://h-engine-10april-newer.vercel.app",  // removed trailing slash
+    "https://h-engine-10april-newer-anjishnuhyperworks-projects.vercel.app"  // added second domain
 ];
 
 const corsOptions = {
