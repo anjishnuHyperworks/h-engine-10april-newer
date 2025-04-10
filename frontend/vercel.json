@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+      { 
+        "source": "/wms-proxy/:path*", 
+        "destination": "http://40.76.140.183/:path*"
+      }
+    ]
+  }
