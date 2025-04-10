@@ -27,6 +27,7 @@ const allowedOrigins = [
     "http://localhost:3000", // LOCAL DEVELOPMENT
     "https://h-engine-10april-newer.vercel.app",  // removed trailing slash
     "https://h-engine-10april-newer-anjishnuhyperworks-projects.vercel.app",  // added second domain
+    "https://h-engine-10april-newer-lj51.vercel.app"
 ];
 
 // Add this before any middleware
